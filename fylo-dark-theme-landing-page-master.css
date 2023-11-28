@@ -12986,7 +12986,9 @@ body {
     .main__first img {
       transform: scale(0.5, 0.5); } }
   .main__first #first-btn {
-    width: 200px; }
+    width: 200px;
+    padding: 20px 0;
+    border-radius: 20px; }
   @media screen and (min-width: 1440px) {
     .main__first {
       min-height: 800px; } }
@@ -13040,7 +13042,8 @@ body {
     .main__fifth .invalid-feedback {
       display: none; }
     .main__fifth #second-btn, .main__fifth #email {
-      border-radius: 12px; }
+      border-radius: 12px;
+      padding: 10px 0; }
     .main__fifth #email {
       width: 330px; }
       .main__fifth #email:focus {

@@ -12976,12 +12976,12 @@ body {
       background-repeat: no-repeat,repeat; } }
   .main .start {
     background: linear-gradient(to right, #65e2d9, #339ecc); }
-  .main h1, .main .h1, .main h2, .main .h2 {
-    font-family: 'Raleway', sans-serif;
+  .main h1 font, .main .h1 font, .main h2 font, .main .h2 font {
+    family: 'Raleway', sans-serif;
     weight: 400; }
-    @media screen and (min-width: 1440px) {
-      .main h1 font, .main .h1 font, .main h2 font, .main .h2 font {
-        weight: 700; } }
+  @media screen and (min-width: 1440px) {
+    .main h1 font, .main .h1 font, .main h2 font, .main .h2 font {
+      weight: 700; } }
   @media screen and (max-width: 1439px) {
     .main__first img {
       transform: scale(0.5, 0.5); } }

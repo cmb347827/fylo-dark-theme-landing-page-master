@@ -152,6 +152,8 @@ body {
 	   }
 	   #first-btn{
 	     width: 200px;
+		 @include padding(20px 0);
+		 @include border-radius(20px);
 	   }
 	   @media screen and(min-width:$container__form-xxl * 1px){
 	      min-height:800px;
@@ -217,6 +219,7 @@ body {
 	   }
 	   #second-btn,#email{
 		  @include border-radius(12px);
+		  @include padding(10px 0);
 	   }
 	   #email{
 	      width:330px;

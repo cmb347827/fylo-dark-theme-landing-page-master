@@ -1,0 +1,294 @@
+
+@import 'custom.scss';
+@import '_globals.scss';
+
+
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important; 
+	-webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;  
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;            
+}
+
+$colors: (
+   Dark Blue1: hsl(217, 28%, 15%),
+   Dark BlueMain: hsl(218, 28%, 13%),
+   Dark Blue2: hsl(216, 53%, 9%),
+   Dark Blue3: hsl(219, 30%, 18%),
+   Light Red (error): hsl(0, 100%, 63%),
+   White: hsl(0, 0%, 100%),
+   Black: #000,
+   CurveColor: #181F2B,
+   lightend: lighten(hsl(217, 28%, 15%),2),
+   Cyan:hsl(176, 68%, 64%),
+);
+$fallback-colors: (
+   SkyBlue4 'Prussian Blue' 'Warm Black' DarkBlue 'Carmine Pink' White Black MidnightBlue Steelblue4 Cyan
+);
+$children: first,second,third,fourth;
+
+@mixin background($url,$position:auto,$size:auto,$repeat:no-repeat,$fixed:fixed,$color:white){
+    background: url($url) $position/$size $repeat $fixed $color; 
+}
+@mixin font-color($color, $fallback-color) {
+  color: $fallback-color;
+  color: $color;
+}
+
+@mixin bg-color($color, $fallback-color) {
+  background-color: $fallback-color;
+  background-color: $color;
+}
+@mixin gradient($direction,$colors...){
+  background: linear-gradient($direction,$colors);
+}
+@mixin width($grid-size) {
+  width: $grid-size * 1px;
+}
+@mixin max-width($grid-size) {
+  max-width: $grid-size * 1px;
+}
+@mixin min-width($grid-size) {
+  min-width: $grid-size * 1px;
+}
+@mixin border-radius($radius...) {
+  border-radius: $radius;
+}
+@mixin margin($args...) {
+  margin: $args;
+}
+@mixin padding($args...) {
+  padding: $args;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  //@include bg-color(map-get($colors,Dark Blue1),nth($fallback-colors,1));
+  @include bg-color(map-get($colors,lightend),nth($fallback-colors,1));
+  @media screen and(min-width:$container__form-xxl * 1px) {
+    @include bg-color(map-get($colors,lightend),nth($fallback-colors,1));
+  }
+  @include padding(20px);
+  font{
+     size: $font_size-15;
+     weight: $font_weight-normal;
+	 family: 'Open Sans', sans-serif;
+  }
+}
+.red{
+  border: 4px solid red;
+}
+#header{
+    @include width($container__form-xs);
+	@include margin(100px auto);
+	img{
+	   transform:scale(0.5,0.5);
+	   @media screen and(min-width:$container__form-xxl * 1px){
+	     transform:scale(1,1);
+	   } 
+	}
+	nav a{
+	   font{
+	     size:$font_size-12;
+	     family: 'Raleway', sans-serif;
+	   }
+	   @include padding(8px);
+	   @include font-color(map-get($colors,White),nth($fallback-colors,8));
+	   &:hover{
+	      cursor:pointer;
+		  text-decoration:underline;
+	   }
+	}
+	@media screen and(min-width:$container__form-xxl * 1px){
+	   @include width($container__form-xxl);
+	   font-size:$font_size-18;
+	}
+}
+.main {
+    @include width($container__form-xs);
+	@include font-color(map-get($colors,White),nth($fallback-colors,8));
+	height: fit-content;
+	@include margin(100px auto);
+	
+	@media screen and(max-width:$container__form-xxl-min * 1px){
+	   background-image: url(./images/bg-curvy-desktop.svg),linear-gradient(to bottom,map-get($colors,lightend),map-get($colors,lightend) 19%,#181F2B 19%,#181F2B 82%,map-get($colors,Dark Blue2) 82%,map-get($colors,Dark Blue2) 100%);
+	   background-position: 50% 14%,0% 0%;
+	   background-size:100% 6%,100% 100%;
+	   background-repeat:no-repeat,repeat;
+	}
+	.start{
+	   @include gradient(to right,hsl(176, 68%, 64%),hsl(198, 60%, 50%));
+	}
+	h1,h2{
+	  font-family: 'Raleway', sans-serif;
+	  weight: $font_weight-normal;
+	  @media screen and(min-width:$container__form-xxl * 1px){
+		 font{
+		   weight: $font_weight-bold;
+		 }
+	  }
+	}
+	&__first{
+	   @media screen and(max-width:$container__form-xxl-min * 1px){
+		  img{
+		    transform:scale(0.5,0.5);
+		  }
+	   }
+	   #first-btn{
+	     width: 200px;
+	   }
+	   @media screen and(min-width:$container__form-xxl * 1px){
+	      min-height:800px;
+	   }
+	}
+	&__second{
+	   
+	}
+	&__third{
+	   #fylo{
+		  cursor: pointer;
+		  a{
+		    @include font-color(map-get($colors,Cyan),nth($fallback-colors,6));
+		  }
+		  &:hover{
+		    filter: invert(87%) sepia(89%) saturate(2%) hue-rotate(267deg) brightness(110%) contrast(97%);
+	        @include font-color(map-get($colors,White),nth($fallback-colors,6));
+		  }
+	   }
+	   #arrow{
+	      filter: invert(69%) sepia(62%) saturate(327%) hue-rotate(127deg) brightness(107%) contrast(84%);
+	      &:hover{
+		    filter: invert(87%) sepia(89%) saturate(2%) hue-rotate(267deg) brightness(110%) contrast(97%);
+		  }
+	   }
+	   @media screen and(max-width:$container__form-xxl-min * 1px){
+		  img{
+		    transform:scale(0.6,0.6);
+		  }
+	   }
+	}
+	&__fourth{
+	   #quote{
+	      @include margin(15px 0 0 15px);
+	      z-index:-1;
+	   }
+	   .profile-img {
+	      @include border-radius(50%);
+		  transform:scale(0.4,0.4);
+		  @media screen and(min-width:$container__form-xxl * 1px){
+		     transform:scale(0.7,0.7);
+		  }
+	   }
+	   .comment{
+	      position:relative;
+		  bottom: 18px;
+		  @include margin(10px);
+	      @include bg-color(map-get($colors,Dark Blue3),nth($fallback-colors,4));
+		  @include font-color(map-get($colors,White),nth($fallback-colors,6));
+		  @media screen and(min-width:$container__form-xxl * 1px){
+		     bottom: 35px;
+			 @include margin(25px);
+		  }
+	   }
+	   @media screen and(min-width:$container__form-xxl * 1px){
+	      @including padding(0 0 0 50px);
+	   }
+	}
+	&__fifth{
+	   min-height: 390px;
+	   .invalid-feedback{
+	      display:none;
+	   }
+	   #second-btn,#email{
+		  @include border-radius(12px);
+	   }
+	   #email{
+	      width:330px;
+	      &:focus{
+		    border:none;
+		  }
+		  @media screen and(min-width:$container__form-xxl * 1px){
+		    width:350px;
+		  }
+	   }
+	   #second-btn{
+	      width: 330px;
+	      @include font-color(map-get($colors,White),nth($fallback-colors,6));
+		  @media screen and(min-width:$container__form-xxl * 1px){
+		     width:250px;
+		  }
+	   }
+	   position:relative;
+	   @include margin(20px);
+	   top: 170px;
+	   @include bg-color(map-get($colors,Dark Blue1),nth($fallback-colors,1));
+	   @media screen and(min-width:$container__form-xxl *1px){
+	      width: 650px;
+		  top: 100px;
+		  min-height:350px;
+		  @include margin(15px auto);
+		  @include padding(25px);
+	   }
+	}
+	&__sixth{
+	   @include padding(200px 0 50px 0);
+	   a,i{
+	     @include font-color(map-get($colors,White),nth($fallback-colors,6));
+	   }
+	   a{
+	     text-decoration:none;
+	   }
+	   i{
+	     border: 1px solid map-get($colors,White);
+		 @include border-radius(50%);
+		 @include padding(5px);
+	     &:hover{
+		   @include font-color(map-get($colors,Cyan),nth($fallback-colors,10));
+		   border: 1px solid map-get($colors,Cyan);
+		 }
+	   }
+	   //@include bg-color(map-get($colors,Dark Blue2),nth($fallback-colors,3));
+	   @media screen and(min-width:$container__form-xxl *1px){
+	      margin-top:50px;
+	      min-height: 300px;
+		  @include padding(150px 0 50px 0);
+		  @include width($container__form-xxl);
+	   }
+	}
+    @media screen and (min-width: $container__form-xxl * 1px) {
+       @include width($container__form-xxl);
+	   background:url(./images/bg-curvy-desktop.svg)50% 30%/100% 20% no-repeat,linear-gradient(to bottom,map-get($colors,lightend),map-get($colors,lightend) 44%,#181F2B 44%,#181F2B 82%,map-get($colors,Dark Blue2) 82%,map-get($colors,Dark Blue2) 100%)0% 0%/100% 100% repeat;
+	   //background-image: url(./images/bg-curvy-desktop.svg),linear-gradient(to bottom,hsl(217, 28%, 15%),hsl(217, 28%, 15%) 50%,#181F2B 50%,#181F2B 85%);
+	   //background-position: 50% 30%,0% 0%;
+	   //background-size:100% 20%,100% 85%;
+	   //background-repeat:no-repeat,repeat;
+	   //height:fit-content;
+	   @include margin(0 auto);
+    }
+}
+
+footer {
+  .attribution {
+    font-size: $font_size-8;
+    text-align: center;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+}

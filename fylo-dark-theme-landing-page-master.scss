@@ -136,8 +136,10 @@ body {
 	   @include gradient(to right,hsl(176, 68%, 64%),hsl(198, 60%, 50%));
 	}
 	h1,h2{
-	  font-family: 'Raleway', sans-serif;
-	  weight: $font_weight-normal;
+	  font{
+	    family: 'Raleway', sans-serif;
+	    weight: $font_weight-normal;
+	  }
 	  @media screen and(min-width:$container__form-xxl * 1px){
 		 font{
 		   weight: $font_weight-bold;

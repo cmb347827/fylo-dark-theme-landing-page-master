@@ -64,7 +64,8 @@ Users should be able to:
 
 ###useful-resources
 
-[How to add background color to only a part of an element](https://stackoverflow.com/questions/17353449/i-want-to-add-a-background-color-only-to-part-of-my-div)
+[How to add background color to only a part of an element](https://stackoverflow.com/questions/17353449/i-want-to-add-a-background-color-only-to-part-of-my-div) <br>
+
 [How do I combine background image and linear-gradient on the same element](https://stackoverflow.com/questions/2504071/how-do-i-combine-a-background-image-and-css3-gradient-on-the-same-element)
 
 ## Author
